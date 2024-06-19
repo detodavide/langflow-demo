@@ -14,11 +14,11 @@ services:
     volumes:
       - langflow-data:/app/langflow
       - ./requirements.txt:/app/requirements.txt
-    entrypoint: >
-      sh -c "
-      pip install --no-cache-dir -r /app/requirements.txt &&
-      exec python -m langflow run --host 0.0.0.0 --port 7860
-      "
+    # entrypoint: >
+    #   sh -c "
+    #   pip install --no-cache-dir -r /app/requirements.txt &&
+    #   exec python -m langflow run --host 0.0.0.0 --port 7860
+    #   "
 
   postgres:
     image: postgres:16
@@ -31,6 +31,18 @@ services:
     volumes:
       - langflow-postgres:/var/lib/postgresql/data
 
+  vector_db:
+    build: ../pg_vector
+    environment:
+      POSTGRES_DB: mydatabase2
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    volumes:
+      - langflow-pgvector:/var/lib/postgresql/data
+    ports:
+      - "5426:5432"
+
 volumes:
   langflow-postgres:
   langflow-data:
+  langflow-pgvector:
