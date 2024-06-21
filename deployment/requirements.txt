@@ -5,3 +5,4 @@ sentence-transformers
 fastembed
 llama_parse
 alembic
+tabula-py
