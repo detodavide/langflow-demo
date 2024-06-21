@@ -4,3 +4,4 @@ asyncpg
 sentence-transformers
 fastembed
 llama_parse
+alembic

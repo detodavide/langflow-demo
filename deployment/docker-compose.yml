@@ -4,7 +4,7 @@ services:
   langflow:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: langflow.Dockerfile
     ports:
       - "7860:7860"
     depends_on:
@@ -42,8 +42,20 @@ services:
       - langflow-pgvector:/var/lib/postgresql/data
     ports:
       - "5426:5432"
+  
+  testdb:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: testdb1
+    ports:
+      - "5419:5432"
+    volumes:
+      - langflow-testdb:/var/lib/postgresql/data
 
 volumes:
   langflow-postgres:
   langflow-data:
   langflow-pgvector:
+  langflow-testdb:
