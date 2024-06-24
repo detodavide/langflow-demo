@@ -9,3 +9,4 @@ tabula-py
 pdfminer.six
 aiofiles
 fastapi
+langflow
