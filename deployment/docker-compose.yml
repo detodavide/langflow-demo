@@ -1,6 +1,16 @@
 version: "3.8"
 
 services:
+
+  fastapi:
+    build:
+      context: ../api_server
+      dockerfile: api_server.Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - langflow-api_server:/app
+
   langflow:
     build:
       context: .
@@ -53,9 +63,10 @@ services:
       - "5419:5432"
     volumes:
       - langflow-testdb:/var/lib/postgresql/data
-
+  
 volumes:
   langflow-postgres:
   langflow-data:
   langflow-pgvector:
   langflow-testdb:
+  langflow-api_server:
