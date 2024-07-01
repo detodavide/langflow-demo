@@ -35,11 +35,12 @@ def upgrade() -> None:
 
     # Create the appointments table
     op.create_table('appointments',
-        sa.Column('id', sa.Integer(), primary_key=True, autoincrement=True),
-        sa.Column('user_id', sa.Integer(), nullable=False),
-        sa.Column('start_time', sa.DateTime(), nullable=False),
-        sa.Column('end_time', sa.DateTime(), nullable=False),
-        sa.Column('description', sa.String(), nullable=True),
+        sa.Column('id', sa.Integer(), nullable=False),
+        sa.Column('customer_name', sa.String(), nullable=False),
+        sa.Column('vehicle_plate', sa.String(), nullable=False),
+        sa.Column('service_type', sa.String(), nullable=False),
+        sa.Column('datetime', sa.DateTime(), nullable=False),
+        sa.Column('booked', sa.Boolean(), nullable=False, default=False),
         sa.PrimaryKeyConstraint('id')
     )
 

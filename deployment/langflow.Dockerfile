@@ -1,4 +1,4 @@
-FROM langflowai/langflow:1.0-alpha
+FROM langflowai/langflow:1.0.5
 
 # Switch to root to install build tools and system dependencies
 USER root
